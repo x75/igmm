@@ -12,6 +12,8 @@ C = np.array([[0.1, -0.1], [1.7, .4]])
 X = np.r_[np.dot(np.random.randn(n_samples_1, 2), C),
           .7 * np.random.randn(n_samples_2 , 2) + np.array([-1, 3])]
 
+print "X.shape", X.shape
+
 model = IGMM_COND(min_components=3, forgetting_factor=0.5)
 model.train(X)
 

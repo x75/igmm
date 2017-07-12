@@ -3,7 +3,7 @@ Created on April,2017
 
 @author: Juan Manuel Acevedo Valle
 """
-from sklearn.mixture import GaussianMixture as GMM
+from sklearn.mixture import GMM
 import itertools
 from scipy import linalg
 import matplotlib as mpl
@@ -150,7 +150,7 @@ class IGMM(GMM):
         gmm.fit(data)
 
         self.weights_ = gmm.weights_
-        self.covariances_ = gmm.covariances_ # self.covariances_ = gmm._get_covars()
+        self.covariances_ = gmm.covars_ # self.covariances_ = gmm._get_covars()
         self.means_ = gmm.means_
         self.n_components = gmm.n_components
 
@@ -490,7 +490,7 @@ class IGMM(GMM):
             f, axes = plt.subplots(1, 1)
         plt.sca(axes)
 
-        for i, (mean, covar, color) in enumerate(zip(gmm.means_, gmm.covariances_, color_iter)): #_get_covars(), color_iter)):
+        for i, (mean, covar, color) in enumerate(zip(gmm.means_, gmm.covars_, color_iter)): #_get_covars(), color_iter)):
             covar_plt = np.zeros((3, 3))
 
             covar_plt[0, 0] = covar[column1, column1]
